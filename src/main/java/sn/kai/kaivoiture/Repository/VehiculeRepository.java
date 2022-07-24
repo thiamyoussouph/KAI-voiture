@@ -5,4 +5,5 @@ import sn.kai.kaivoiture.Entites.Vehicules;
 
 public interface VehiculeRepository extends JpaRepository<Vehicules,Integer> {
 
+
 }

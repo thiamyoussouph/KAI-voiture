@@ -1,5 +1,6 @@
 package sn.kai.kaivoiture.Entites;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,8 +14,8 @@ public class Marque {
     private int id;
     private String libelet;
     @OneToMany(mappedBy = "marque")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Collection<Modele>modeles;
-    @OneToMany(mappedBy = "marque")
-    private Collection<Vehicules>vehicules;
+
 
 }
