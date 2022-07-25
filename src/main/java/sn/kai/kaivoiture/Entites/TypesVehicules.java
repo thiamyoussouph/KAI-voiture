@@ -13,7 +13,7 @@ import java.util.Collection;
 public class TypesVehicules {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String libelet;
+    private String libellet;
     @OneToMany(mappedBy = "typesVehicules")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Collection<Modele>modeles;

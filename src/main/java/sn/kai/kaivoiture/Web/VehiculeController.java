@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @Slf4j
-@CrossOrigin(origins = "*")
+@CrossOrigin("*")
 public class VehiculeController {
     @Autowired
     private VehiculeImplemente vehiculeImplemente;

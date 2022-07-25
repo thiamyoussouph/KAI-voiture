@@ -12,10 +12,9 @@ import java.util.Collection;
 public class Marque {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String libelet;
+    private String libellet;
     @OneToMany(mappedBy = "marque")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Collection<Modele>modeles;
-
 
 }
