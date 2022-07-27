@@ -15,7 +15,7 @@ import java.util.Date;
 public class Vehicules {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int id;
-    @Column(name = "Matricule",unique = true,length = 8)
+    @Column(name = "Matricule",unique = true,length = 16)
     private String Matricule;
     private int NombrePlace;
     private Date dateSOrtie;

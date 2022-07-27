@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -15,6 +16,7 @@ public class Modele {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String libellet;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private Marque marque;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

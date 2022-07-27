@@ -14,7 +14,7 @@ public class Marque {
     private int id;
     private String libellet;
     @OneToMany(mappedBy = "marque")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+
     private Collection<Modele>modeles;
 
 }
