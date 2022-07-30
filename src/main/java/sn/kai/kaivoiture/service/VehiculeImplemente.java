@@ -34,8 +34,6 @@ public class VehiculeImplemente implements IVehiculeService {
 
 
 
-
-
     @Override
     public Collection<Vehicules> listvehicule() {
         return vehiculeRepository.findAll();

@@ -33,6 +33,7 @@ public Collection<Vehicules> vehicules(){
 
         return vehiculeImplemente.saveVehicule(vehicules);
 
+
     }
 @PutMapping("/updateVehicule/{id}")
 public Vehicules updatevehicule(@PathVariable(value = "id")int id,@RequestBody Vehicules vehicules) throws VehiculeException {
@@ -49,3 +50,4 @@ return vehiculeImplemente.edite(id);
 }
 
 }
+
