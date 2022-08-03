@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import sn.kai.kaivoiture.enums.TypesCarburant;
 import sn.kai.kaivoiture.enums.VehiculeSatus;
 import sn.kai.kaivoiture.enums.vehiculeEtats;
 
@@ -15,12 +16,15 @@ import java.util.Date;
 public class Vehicules {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int id;
-    @Column(name = "Matricule",unique = true,length = 16)
+    private String Numerochassie;
+    @Column(name = "Matricule",unique = true,length = 33)
     private String Matricule;
     private int NombrePlace;
     private Date dateSOrtie;
     private Date DateMisEnMarche;
     private Date DateAchat;
+    @Enumerated(EnumType.STRING)
+    private TypesCarburant TypesCarburant;
     @Enumerated(EnumType.STRING)
     private VehiculeSatus status;
     @Enumerated(EnumType.STRING)

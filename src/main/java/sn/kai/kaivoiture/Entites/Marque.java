@@ -14,7 +14,6 @@ public class Marque {
     private int id;
     private String libellet;
     @OneToMany(mappedBy = "marque")
-
     private Collection<Modele>modeles;
 
 }

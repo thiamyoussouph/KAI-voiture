@@ -1,7 +1,10 @@
 package sn.kai.kaivoiture.service;
 
+import jdk.jshell.Snippet;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.engine.spi.Status;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sn.kai.kaivoiture.Entites.Marque;
@@ -81,5 +84,8 @@ public class VehiculeImplemente implements IVehiculeService {
 
         return modeleRepository.save(modele);
     }
+
+
+
 
 }
