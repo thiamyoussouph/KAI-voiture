@@ -15,6 +15,7 @@ import sn.kai.kaivoiture.Repository.MarqueReposirory;
 import sn.kai.kaivoiture.Repository.ModeleRepository;
 import sn.kai.kaivoiture.Repository.TypesVehiculeRepository;
 import sn.kai.kaivoiture.Repository.VehiculeRepository;
+import sn.kai.kaivoiture.enums.TypesCarburant;
 
 import java.util.Collection;
 
@@ -84,6 +85,23 @@ public class VehiculeImplemente implements IVehiculeService {
 
         return modeleRepository.save(modele);
     }
+
+    @Override
+    public long vehiculeenmarchefalse() {
+        return vehiculeRepository.countVehiculesByEnmarcheIsFalse();
+    }
+
+    @Override
+    public long vehiculenpane() {
+        return vehiculeRepository.countVehiculesByEtatpanneIsTrue();
+    }
+
+    @Override
+    public long vehiculepasenpanne() {
+        return vehiculeRepository.countVehiculesByEtatpanneIsFalse();
+    }
+
+
 
 
 

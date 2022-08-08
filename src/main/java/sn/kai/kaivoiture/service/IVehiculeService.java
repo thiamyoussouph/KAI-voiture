@@ -22,6 +22,10 @@ public interface IVehiculeService {
     Marque SaveMarque(Marque marque) throws MaraquenotFondException;
 
     Modele SaveModele(Modele modele, int marqueId) throws ModeletFondException;
+    long vehiculeenmarchefalse();
+    long vehiculenpane();
+    long vehiculepasenpanne();
+
 
 
 }

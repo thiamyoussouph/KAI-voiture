@@ -23,12 +23,16 @@ public class Vehicules {
     private Date dateSOrtie;
     private Date DateMisEnMarche;
     private Date DateAchat;
-    @Enumerated(EnumType.STRING)
-    private TypesCarburant TypesCarburant;
+    private String TypesCarburant;
     @Enumerated(EnumType.STRING)
     private VehiculeSatus status;
     @Enumerated(EnumType.STRING)
     private vehiculeEtats Etats;
+    private boolean etatpanne;
+    private boolean enmarche;
     @ManyToOne
     private Modele modele;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "vehicules")
+    private Collection<PannesVehicule>pannesVehicules;
 }

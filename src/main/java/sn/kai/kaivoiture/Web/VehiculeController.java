@@ -9,6 +9,8 @@ import sn.kai.kaivoiture.Entites.Vehicules;
 import sn.kai.kaivoiture.Exception.MarquenotFondException;
 import sn.kai.kaivoiture.Exception.VehiculeException;
 import sn.kai.kaivoiture.Exception.VehiculeExceptionEdite;
+import sn.kai.kaivoiture.Repository.VehiculeRepository;
+import sn.kai.kaivoiture.enums.TypesCarburant;
 import sn.kai.kaivoiture.service.VehiculeImplemente;
 
 import java.util.Collection;
@@ -19,6 +21,7 @@ import java.util.List;
 @Slf4j
 @CrossOrigin("*")
 public class VehiculeController {
+    VehiculeRepository vehiculeRepository;
     @Autowired
     private VehiculeImplemente vehiculeImplemente;
     @GetMapping("/affiche")
@@ -49,6 +52,23 @@ return vehiculeImplemente.edite(id);
         vehiculeImplemente.deletevehicule(id);
 }
 
+
+    @GetMapping("/enmarche")
+    public long edite()  {
+        return vehiculeRepository.countVehiculesByEnmarcheIsTrue();
+    }
+    @GetMapping("/enmarchefals")
+    public long allvehiculeInnctif()  {
+        return vehiculeImplemente.vehiculeenmarchefalse();
+    }
+    @GetMapping("/enpanne")
+    public long allvehiculeenpanne()  {
+        return vehiculeImplemente.vehiculenpane();
+    }
+    @GetMapping("/pasenpanne")
+    public long allvehiculepaspanne()  {
+        return vehiculeImplemente.vehiculepasenpanne();
+    }
 
 
 
