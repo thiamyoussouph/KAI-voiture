@@ -16,12 +16,13 @@ public class Modele {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String libellet;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+
     @ManyToOne
     private Marque marque;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "modele")
     private Collection<Vehicules>vehicules;
+
     @ManyToOne
     private TypesVehicules typesVehicules;
 }

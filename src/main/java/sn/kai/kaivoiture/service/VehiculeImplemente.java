@@ -1,23 +1,22 @@
 package sn.kai.kaivoiture.service;
 
-import jdk.jshell.Snippet;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.engine.spi.Status;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sn.kai.kaivoiture.Dtos.VehiculesDto;
 import sn.kai.kaivoiture.Entites.Marque;
 import sn.kai.kaivoiture.Entites.Modele;
 import sn.kai.kaivoiture.Entites.Vehicules;
 import sn.kai.kaivoiture.Exception.*;
+import sn.kai.kaivoiture.Mappers.VehiculesMapperIplement;
 import sn.kai.kaivoiture.Repository.MarqueReposirory;
 import sn.kai.kaivoiture.Repository.ModeleRepository;
 import sn.kai.kaivoiture.Repository.TypesVehiculeRepository;
 import sn.kai.kaivoiture.Repository.VehiculeRepository;
-import sn.kai.kaivoiture.enums.TypesCarburant;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -28,19 +27,23 @@ public class VehiculeImplemente implements IVehiculeService {
     private ModeleRepository modeleRepository;
     private TypesVehiculeRepository typesVehiculeRepository;
     private VehiculeRepository vehiculeRepository;
+    private VehiculesMapperIplement dtopMapper;
 
     @Override
-    public Vehicules saveVehicule(Vehicules vehicules) throws MarquenotFondException {
-
-        return vehiculeRepository.save(vehicules);
+    public VehiculesDto saveVehicule(VehiculesDto vehiculesDto) throws MarquenotFondException {
+    Vehicules vehicules=dtopMapper.fromVehiculesDto(vehiculesDto);
+    Vehicules savevehicule=vehiculeRepository.save(vehicules);
+        return dtopMapper.fromVehicules(savevehicule);
     }
 
 
 
 
     @Override
-    public Collection<Vehicules> listvehicule() {
-        return vehiculeRepository.findAll();
+    public Collection<VehiculesDto> listvehicule() {
+        Collection<Vehicules>vehicules= vehiculeRepository.findAll();
+        Collection<VehiculesDto> vehiculesDto= vehicules.stream().map(vehicule ->dtopMapper.fromVehicules(vehicule)).collect(Collectors.toList());
+        return vehiculesDto;
     }
 
     @Override
@@ -50,41 +53,23 @@ public class VehiculeImplemente implements IVehiculeService {
 
 
     @Override
-    public Vehicules update(int id, Vehicules vehicule) throws VehiculeException {
-        Vehicules vehicules=vehiculeRepository.findById(id).orElse(null);
-        if (vehicules==null)
-            throw new VehiculeException("ce vehicule nexiste pas dans la base de donner ");
-
-        vehicule.setId(id);
-         vehiculeRepository.save(vehicule);
-        return vehicules;
+    public VehiculesDto update( VehiculesDto vehiculesDto) throws VehiculeException {
+        Vehicules vehicules=dtopMapper.fromVehiculesDto(vehiculesDto);
+        Vehicules savevehicule=vehiculeRepository.save(vehicules);
+        return dtopMapper.fromVehicules(savevehicule);
     }
 
     @Override
-    public Vehicules edite(int id) throws VehiculeExceptionEdite {
+    public VehiculesDto edite(int id) throws VehiculeExceptionEdite {
         Vehicules vehicules=vehiculeRepository.findById(id).orElse(null);
         if (vehicules==null)
             throw new VehiculeExceptionEdite("le non du model existe deja ");
         vehiculeRepository.findById(id);
-        return vehicules;
+        return dtopMapper.fromVehicules(vehicules);
     }
 
-    @Override
-    public Marque SaveMarque(Marque marque) throws MaraquenotFondException {
- Marque marque1=marqueReposirory.findById(marque.getId()).orElse(null);
- if (marque!=null)
-     throw new MaraquenotFondException("le non du model existe deja ");
-        return marqueReposirory.save(marque);
-    }
 
-    @Override
-    public Modele SaveModele(Modele modele, int marqueId) throws ModeletFondException {
-        Modele modele1=modeleRepository.findById(modele.getId()).orElse(null);
-        if (modele1!=null)
-            throw new ModeletFondException("ce model existe deja ");
 
-        return modeleRepository.save(modele);
-    }
 
     @Override
     public long vehiculeenmarchefalse() {

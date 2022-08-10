@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import sn.kai.kaivoiture.Dtos.MarqueDto;
 import sn.kai.kaivoiture.Entites.Marque;
 import sn.kai.kaivoiture.Entites.Vehicules;
 import sn.kai.kaivoiture.Repository.MarqueReposirory;
@@ -22,7 +23,7 @@ public class MarqueController {
 private MarqueImplement marqueImplement;
 private MarqueReposirory marqueReposirory;
     @GetMapping("/affiche/marque")
-    public Collection<Marque> Marque(){
+    public Collection<MarqueDto> Marque(){
 
         return marqueImplement.ListeMarque();
 

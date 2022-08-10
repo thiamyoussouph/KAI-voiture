@@ -1,41 +1,34 @@
-package sn.kai.kaivoiture.Entites;
+package sn.kai.kaivoiture.Dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import sn.kai.kaivoiture.enums.TypesCarburant;
+import sn.kai.kaivoiture.Entites.Modele;
+import sn.kai.kaivoiture.Entites.PannesVehicule;
 import sn.kai.kaivoiture.enums.VehiculeSatus;
 import sn.kai.kaivoiture.enums.vehiculeEtats;
 
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
-@Entity
-@Data @AllArgsConstructor @NoArgsConstructor
-public class Vehicules {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+
+@Data
+public class VehiculesDto {
+
     private  int id;
     private String Numerochassie;
-    @Column(name = "Matricule",unique = true,length = 33)
     private String Matricule;
     private int NombrePlace;
     private Date dateSOrtie;
     private Date DateMisEnMarche;
     private Date DateAchat;
     private String TypesCarburant;
-    @Enumerated(EnumType.STRING)
     private VehiculeSatus status;
-    @Enumerated(EnumType.STRING)
     private vehiculeEtats Etats;
     private boolean etatpanne;
     private boolean enmarche;
-    @ManyToOne
     private Modele modele;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "vehicules")
     private Collection<PannesVehicule>pannesVehicules;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "vehicules")
-    private Collection<Affectation>affectations;
 }

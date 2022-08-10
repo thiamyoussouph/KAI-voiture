@@ -1,20 +1,18 @@
-package sn.kai.kaivoiture.Entites;
+package sn.kai.kaivoiture.Dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import sn.kai.kaivoiture.Entites.Modele;
 
 import javax.persistence.*;
 import java.util.Collection;
 
-@Entity
-@Data @AllArgsConstructor @NoArgsConstructor
-public class TypesVehicules {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+@Data
+public class TypesVehiculesDto {
     private int id;
     private String libellet;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "typesVehicules")
     private Collection<Modele>modeles;
 }

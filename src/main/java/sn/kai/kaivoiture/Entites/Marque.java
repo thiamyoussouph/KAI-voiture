@@ -13,6 +13,7 @@ public class Marque {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String libellet;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "marque")
     private Collection<Modele>modeles;
 

@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sn.kai.kaivoiture.Dtos.VehiculesDto;
 import sn.kai.kaivoiture.Entites.Vehicules;
 import sn.kai.kaivoiture.Exception.MarquenotFondException;
 import sn.kai.kaivoiture.Exception.VehiculeException;
@@ -25,25 +26,26 @@ public class VehiculeController {
     @Autowired
     private VehiculeImplemente vehiculeImplemente;
     @GetMapping("/affiche")
-public Collection<Vehicules> vehicules(){
+public Collection<VehiculesDto> vehicules(){
 
     return vehiculeImplemente.listvehicule();
 
 }
 
     @PostMapping ("/ajout")
-    public Vehicules ajoutvehicules(@RequestBody Vehicules vehicules) throws MarquenotFondException {
+    public VehiculesDto ajoutvehicules(@RequestBody VehiculesDto vehiculesDto) throws MarquenotFondException {
 
-        return vehiculeImplemente.saveVehicule(vehicules);
+        return vehiculeImplemente.saveVehicule(vehiculesDto);
 
 
     }
 @PutMapping("/updateVehicule/{id}")
-public Vehicules updatevehicule(@PathVariable(value = "id")int id,@RequestBody Vehicules vehicules) throws VehiculeException {
-      return   vehiculeImplemente.update(id,vehicules);
+public VehiculesDto updatevehicule(@PathVariable(value = "id")int id,@RequestBody VehiculesDto vehiculesDto) throws VehiculeException {
+        vehiculesDto.setId(id);
+      return   vehiculeImplemente.update(vehiculesDto);
 }
-@GetMapping("editer/{id}")
-public Vehicules edite(@PathVariable(value = "id")int id) throws VehiculeExceptionEdite {
+    @GetMapping("editer/{id}")
+public VehiculesDto edite(@PathVariable(value = "id")int id) throws VehiculeExceptionEdite {
 return vehiculeImplemente.edite(id);
 }
 
