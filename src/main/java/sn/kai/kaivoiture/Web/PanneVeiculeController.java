@@ -3,7 +3,12 @@ package sn.kai.kaivoiture.Web;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import sn.kai.kaivoiture.Dtos.PannesVehiculeDto;
+import sn.kai.kaivoiture.Dtos.VehiculesDto;
 import sn.kai.kaivoiture.Entites.PannesVehicule;
+import sn.kai.kaivoiture.Entites.Vehicules;
+import sn.kai.kaivoiture.Exception.VehiculeException;
+import sn.kai.kaivoiture.Exception.VehiculeExceptionEdite;
 import sn.kai.kaivoiture.service.PanneVehiculeImplement;
 
 
@@ -16,15 +21,30 @@ import java.util.Collection;
 public class PanneVeiculeController {
     private PanneVehiculeImplement panneVehiculeImplement;
     @GetMapping("/panneenregistrer")
-    public Collection<PannesVehicule> pannesVehicules(){
+    public Collection<PannesVehiculeDto> pannesVehicules(){
 
         return panneVehiculeImplement.findall();
 
     }
     @PostMapping("/creerpannes")
-    public PannesVehicule ajoutvehicules(@RequestBody PannesVehicule pannesVehicule){
-
-        return panneVehiculeImplement.savepannevehicule(pannesVehicule);
+    public PannesVehiculeDto ajoutPannevhicule(@RequestBody PannesVehiculeDto pannesVehiculeDto){
+int vehiculeid=pannesVehiculeDto.getVehicules().getId();
+        return panneVehiculeImplement.savepanneve(pannesVehiculeDto,vehiculeid);
     }
-    
+        @PutMapping("/updatePannevehicule/{id}")
+    public PannesVehiculeDto updatePannevehiculevehicule(@PathVariable(value = "id")int id,@RequestBody PannesVehiculeDto pannesVehiculeDto, VehiculesDto vehiculesDto) {
+        pannesVehiculeDto.setId(id);
+        return   panneVehiculeImplement.update(id,pannesVehiculeDto,vehiculesDto);
+    }
+    @GetMapping("editerpannevehicule/{id}")
+    public PannesVehiculeDto edite(@PathVariable(value = "id")int id) {
+        return panneVehiculeImplement.findbyid(id);
+    }
+
+    @DeleteMapping("/suprimerpannevehicule/{id}")
+    public void suprsion(@PathVariable(value = "id") int id){
+        panneVehiculeImplement.deletePannevehicule(id);
+    }
+
+
 }

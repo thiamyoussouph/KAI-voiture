@@ -42,16 +42,15 @@ public class AffectationIplement implements IaffectationService{
 
     @Override
     public void deleteAffactation(int id) {
-
+          affectationRepository.deleteById(id);
     }
 
     @Override
     public AffectationDto update(AffectationDto affectationDto) {
-        Affectation vehicules=dtopMapper.fromVehiculesDto(vehiculesDto);
-        return null;
-        Vehicules vehicules=dtopMapper.fromVehiculesDto(vehiculesDto);
-        Vehicules savevehicule=vehiculeRepository.save(vehicules);
-        return dtopMapper.fromVehicules(savevehicule);
+        Affectation affectation=affectationMapperImplement.fromAffectationDto(affectationDto);
+        Affectation affectation1=affectationRepository.save(affectation);
+        return affectationMapperImplement.fromAffectation(affectation1);
+
     }
 
     @Override

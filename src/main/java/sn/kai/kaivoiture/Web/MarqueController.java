@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import sn.kai.kaivoiture.Dtos.MarqueDto;
+import sn.kai.kaivoiture.Dtos.VehiculesDto;
 import sn.kai.kaivoiture.Entites.Marque;
 import sn.kai.kaivoiture.Entites.Vehicules;
+import sn.kai.kaivoiture.Exception.VehiculeExceptionEdite;
 import sn.kai.kaivoiture.Repository.MarqueReposirory;
 import sn.kai.kaivoiture.service.MarqueImplement;
 import sn.kai.kaivoiture.service.VehiculeImplemente;
@@ -29,10 +31,10 @@ private MarqueReposirory marqueReposirory;
 
     }
 
+
+
     @GetMapping("/affiche/marque/{id}")
-    public Marque getMarque(@PathVariable Integer id){
-
-        return marqueReposirory.findById(id).orElse(null);
-
+    public MarqueDto edite(@PathVariable(value = "id")int id) {
+        return marqueImplement.edite(id);
     }
 }

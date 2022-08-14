@@ -18,11 +18,11 @@ public class Modele {
     private String libellet;
 
     @ManyToOne
+
     private Marque marque;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "modele")
     private Collection<Vehicules>vehicules;
-
     @ManyToOne
     private TypesVehicules typesVehicules;
 }

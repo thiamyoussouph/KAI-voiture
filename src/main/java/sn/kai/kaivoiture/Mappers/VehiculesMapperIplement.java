@@ -6,7 +6,7 @@ import sn.kai.kaivoiture.Dtos.VehiculesDto;
 import sn.kai.kaivoiture.Entites.Vehicules;
 @Service
 public class VehiculesMapperIplement {
-    public VehiculesDto fromVehicules(Vehicules vehicules){
+        public VehiculesDto fromVehicules(Vehicules vehicules){
         VehiculesDto vehiculesDto=new VehiculesDto();
         BeanUtils.copyProperties(vehicules,vehiculesDto);
      return vehiculesDto;

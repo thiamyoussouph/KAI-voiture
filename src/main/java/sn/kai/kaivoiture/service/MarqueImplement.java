@@ -8,6 +8,7 @@ import sn.kai.kaivoiture.Dtos.MarqueDto;
 import sn.kai.kaivoiture.Dtos.VehiculesDto;
 import sn.kai.kaivoiture.Entites.Marque;
 import sn.kai.kaivoiture.Entites.Vehicules;
+import sn.kai.kaivoiture.Exception.VehiculeExceptionEdite;
 import sn.kai.kaivoiture.Mappers.MarqueMapperImplement;
 import sn.kai.kaivoiture.Repository.MarqueReposirory;
 import sn.kai.kaivoiture.Repository.ModeleRepository;
@@ -31,5 +32,15 @@ public class MarqueImplement implements Imarque{
         Collection<MarqueDto> marqueDtos=marques.stream().map(marque -> marqueMapperImplement.fromMarque(marque)).collect(Collectors.toList());
 
         return marqueDtos;
+    }
+
+    @Override
+    public MarqueDto edite(int id) {
+        Marque marque=marqueReposirory.findById(id).orElse(null);
+   marqueReposirory.findById(id);
+        return marqueMapperImplement.fromMarque(marque);
+
+
+
     }
 }

@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sn.kai.kaivoiture.Dtos.PannesDto;
 import sn.kai.kaivoiture.Entites.Pannes;
+import sn.kai.kaivoiture.Mappers.PanneMapperIplement;
 import sn.kai.kaivoiture.Repository.PanneRepository;
-import sn.kai.kaivoiture.Repository.VehiculeRepository;
-
 import java.util.Collection;
+import java.util.stream.Collectors;
+
 @Service
 @Transactional
 @AllArgsConstructor
@@ -16,27 +18,44 @@ import java.util.Collection;
 public class PannesIplement implements IPanneService{
     PanneRepository panneRepository;
 
-
-
-    @Override
-    public Pannes savepanne(Pannes pannes) {
-
-        return panneRepository.save(pannes);
-    }
+PanneMapperIplement panneMapperIplement;
 
     @Override
-    public Collection<Pannes> listPanne() {
-        return panneRepository.findAll();
+    public PannesDto savepanne(PannesDto pannesDto) {
+        Pannes pannes=panneMapperIplement.fromPannesDto(pannesDto);
+        Pannes pannes1=panneRepository.save(pannes);
+        return panneMapperIplement.fromPanne(pannes1);
     }
 
 
+
+
     @Override
-    public Pannes findbyid(int id) {
-        return null;
+    public Collection<PannesDto> listPanne() {
+        Collection<Pannes>pannes= panneRepository.findAll();
+        Collection<PannesDto> pannesDtos= pannes.stream().map(panne ->panneMapperIplement.fromPanne(panne)).collect(Collectors.toList());
+        return pannesDtos;
+    }
+
+
+    @Override
+    public PannesDto findbyid(int id) {
+        Pannes pannes=panneRepository.findById(id).orElse(null);
+        panneRepository.findById(id);
+        return panneMapperIplement.fromPanne(pannes);
     }
 
     @Override
-    public Pannes update(int id, Pannes pannes) {
-        return null;
+    public PannesDto update(PannesDto pannesDto) {
+        Pannes pannes=panneMapperIplement.fromPannesDto(pannesDto);
+        Pannes panne=panneRepository.save(pannes);
+        return panneMapperIplement.fromPanne(panne);
     }
+
+    @Override
+    public void delete(int id) {
+       panneRepository.deleteById(id);
+    }
+
+
 }

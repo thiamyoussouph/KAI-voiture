@@ -17,4 +17,5 @@ public class ModeleDto {
     private String libellet;
     private Marque marque;
     private TypesVehicules typesVehicules;
+   
 }

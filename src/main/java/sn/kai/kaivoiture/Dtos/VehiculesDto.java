@@ -31,4 +31,6 @@ public class VehiculesDto {
     private boolean enmarche;
     private Modele modele;
     private Collection<PannesVehicule>pannesVehicules;
+  
+
 }

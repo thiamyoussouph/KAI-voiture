@@ -15,5 +15,5 @@ public class ChauffeurDto {
     private String noms;
     private  String prenoms;
     private String adresse;
-    Collection<Affectation>affectations;
+
 }
