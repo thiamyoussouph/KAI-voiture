@@ -5,10 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import sn.kai.kaivoiture.Dtos.PannesVehiculeDto;
 import sn.kai.kaivoiture.Dtos.VehiculesDto;
-import sn.kai.kaivoiture.Entites.PannesVehicule;
-import sn.kai.kaivoiture.Entites.Vehicules;
-import sn.kai.kaivoiture.Exception.VehiculeException;
-import sn.kai.kaivoiture.Exception.VehiculeExceptionEdite;
 import sn.kai.kaivoiture.service.PanneVehiculeImplement;
 
 

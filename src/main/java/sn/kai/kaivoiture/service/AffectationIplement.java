@@ -54,8 +54,10 @@ public class AffectationIplement implements IaffectationService{
     }
 
     @Override
-    public AffectationDto edite(int id) {
+    public AffectationDto edite(int id) throws VehiculeExceptionEdite {
         Affectation affectation=affectationRepository.findById(id).orElse(null);
+        if (affectation==null)
+            throw new VehiculeExceptionEdite("le non du model existe deja ");
             affectationRepository.findById(id);
         return affectationMapperImplement.fromAffectation(affectation);
     }

@@ -17,6 +17,7 @@ public class Chauffeur {
     private String noms;
     private  String prenoms;
     private String adresse;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy ="chauffeur" )
     Collection<Affectation>affectations;
 }

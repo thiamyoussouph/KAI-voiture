@@ -29,7 +29,7 @@ public Collection<AffectationDto> affectation(){
         return affectationIplement.saveaffectation(affectationDto);
 }
     @GetMapping("detaiAffectation/{id}")
-    public AffectationDto edite(@PathVariable(value = "id")int id) {
+    public AffectationDto edite(@PathVariable(value = "id")int id) throws VehiculeExceptionEdite {
         return affectationIplement.edite(id);
     }
     @PutMapping("/updateAffectation/{id}")

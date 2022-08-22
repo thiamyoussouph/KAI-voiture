@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import sn.kai.kaivoiture.Entites.Affectation;
+import sn.kai.kaivoiture.Entites.KilometrageVehicule;
 import sn.kai.kaivoiture.Entites.Modele;
 import sn.kai.kaivoiture.Entites.PannesVehicule;
 import sn.kai.kaivoiture.enums.VehiculeSatus;
@@ -31,6 +33,6 @@ public class VehiculesDto {
     private boolean enmarche;
     private Modele modele;
     private Collection<PannesVehicule>pannesVehicules;
-  
+    private Collection<Affectation>affectations;
 
 }

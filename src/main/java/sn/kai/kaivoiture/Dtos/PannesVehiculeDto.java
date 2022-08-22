@@ -9,7 +9,6 @@ import java.util.Date;
 
 @Data
 public class PannesVehiculeDto {
-
     private int id;
     private Date  date;
     private String lieux;

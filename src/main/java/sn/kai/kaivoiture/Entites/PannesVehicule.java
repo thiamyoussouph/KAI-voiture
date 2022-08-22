@@ -1,5 +1,6 @@
 package sn.kai.kaivoiture.Entites;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ public class PannesVehicule {
     private Date  date;
     private String lieux;
     private String description;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private Vehicules vehicules;
     @ManyToOne
