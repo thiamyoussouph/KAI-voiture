@@ -13,6 +13,7 @@ import sn.kai.kaivoiture.Mappers.PannesVehiculeMapperImplement;
 import sn.kai.kaivoiture.Mappers.VehiculesMapperIplement;
 import sn.kai.kaivoiture.Repository.PanneVehiculeRepository;
 import sn.kai.kaivoiture.Repository.VehiculeRepository;
+import sn.kai.kaivoiture.enums.Nievau;
 
 import java.util.Collection;
 import java.util.Date;
@@ -89,14 +90,16 @@ public class PanneVehiculeImplement implements IPannevehiculeService{
         AtomicInteger compteurResolue= new AtomicInteger();
          AtomicInteger compteurpanneHaut= new AtomicInteger();
 
+
         Vehicules vehicule= vehiculeRepository.findById(vehiculeid).orElseThrow();
         vehicule.getPannesVehicules().forEach(pannesVehicule1 -> {
 
-                if (pannesVehicule1.getNiveau()==HAUT){
-                    compteurpanneHaut.getAndIncrement();
-                }
+
             if(pannesVehicule1.isEtat()==false){
                 compteurNonResolue.set(compteurNonResolue.get() + 1);
+                if (pannesVehicule1.getNiveau()==HAUT){
+                    compteurpanneHaut.set(compteurpanneHaut.get()+1);
+                }
             }else {
                 compteurResolue.set(compteurResolue.get() + 1);
             }
