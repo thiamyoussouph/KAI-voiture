@@ -1,5 +1,6 @@
 package sn.kai.kaivoiture.service;
 
+import sn.kai.kaivoiture.Dtos.PannesDto;
 import sn.kai.kaivoiture.Dtos.PannesVehiculeDto;
 import sn.kai.kaivoiture.Dtos.VehiculesDto;
 import sn.kai.kaivoiture.Entites.PannesVehicule;
@@ -13,5 +14,6 @@ public interface IPannevehiculeService {
     PannesVehiculeDto findbyid(int id);
     PannesVehiculeDto update(int id, PannesVehiculeDto pannesVehiculeDto, VehiculesDto vehiculesDto);
     PannesVehiculeDto savepanneve( PannesVehiculeDto pannesVehiculeDto, int id);
+   PannesVehiculeDto resolutionpannevehicule(PannesVehiculeDto pannesVehiculeDto, int id ,int vehiculeid);
     public  void  deletePannevehicule(int id);
 }

@@ -6,15 +6,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.Collection;
+
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor
-public class KilometrageVehicule {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class TypesJobDeMaintenance {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private long kilometrage;
-    private Date dateEnregistrement;
+    private String libelle;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @ManyToOne
-    Vehicules vehicules;
+    @OneToMany(mappedBy = "typesJobDeMaintenance")
+    private Collection<JobDeMaintenance> jobDeMaintenances;
 }

@@ -20,4 +20,5 @@ public class Pannes {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "pannes")
     private  Collection<PannesVehicule>pannesVehicules;
+
 }

@@ -3,6 +3,7 @@ package sn.kai.kaivoiture.Web;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import sn.kai.kaivoiture.Entites.Role;
 import sn.kai.kaivoiture.Entites.User;
@@ -19,8 +20,10 @@ import java.util.Set;
 public class UserController {
 @Autowired
 private UserServiceImplement userServiceImplement;
+
     @PostMapping("/saveuser")
     public User saveUser(@RequestBody User user) throws UsernameAlreadyExistException {
+
         Set<UserRole> roles = new HashSet<>();
         Role role = new Role();
         role.setId(15);

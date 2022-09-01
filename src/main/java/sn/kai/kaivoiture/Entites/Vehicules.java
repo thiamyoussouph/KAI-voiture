@@ -34,10 +34,13 @@ public class Vehicules {
     private Modele modele;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "vehicules")
-    private Collection<PannesVehicule>pannesVehicules;
+    private Collection<PannesVehicule> pannesVehicules;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "vehicules")
     private Collection<Affectation>affectations;
+
     @OneToMany(mappedBy = "vehicules")
     private Collection<KilometrageVehicule>kilometrageVehicules;
+    @OneToMany(mappedBy = "vehicules")
+    private Collection<JobDeMaintenance>jobDeMaintenances;
 }

@@ -41,6 +41,12 @@ int vehiculeid=pannesVehiculeDto.getVehicules().getId();
     public void suprsion(@PathVariable(value = "id") int id){
         panneVehiculeImplement.deletePannevehicule(id);
     }
+ @PutMapping("/resolutionpanne/{id}")
+    public PannesVehiculeDto resolutionpanne(@PathVariable(value = "id")int id,@RequestBody PannesVehiculeDto pannesVehiculeDto) {
 
+     int vehiculeid=pannesVehiculeDto.getVehicules().getId();
+        pannesVehiculeDto.setId(id);
+        return panneVehiculeImplement.resolutionpannevehicule(pannesVehiculeDto,vehiculeid,id);
+    }
 
 }
