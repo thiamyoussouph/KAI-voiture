@@ -88,7 +88,7 @@ public class PanneVehiculeImplement implements IPannevehiculeService{
         pannesVehicule.setDateResolution(new Date());
         AtomicInteger compteurNonResolue= new AtomicInteger();
         AtomicInteger compteurResolue= new AtomicInteger();
-         AtomicInteger compteurpanneHaut= new AtomicInteger();
+        AtomicInteger compteurpanneHaut= new AtomicInteger();
 
 
         Vehicules vehicule= vehiculeRepository.findById(vehiculeid).orElseThrow();

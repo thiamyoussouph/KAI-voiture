@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import sn.kai.kaivoiture.enums.TypesCarburant;
 import sn.kai.kaivoiture.enums.VehiculeSatus;
 import sn.kai.kaivoiture.enums.vehiculeEtats;
@@ -20,6 +21,7 @@ public class Vehicules {
     @Column(name = "Matricule",unique = true,length = 33)
     private String Matricule;
     private int NombrePlace;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateSOrtie;
     private Date DateMisEnMarche;
     private Date DateAchat;
