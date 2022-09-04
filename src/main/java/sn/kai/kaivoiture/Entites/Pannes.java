@@ -17,8 +17,5 @@ public class Pannes {
     private int id;
     private  String libellet;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "pannes")
-    private  Collection<PannesVehicule>pannesVehicules;
 
 }

@@ -26,7 +26,6 @@ public class JobDeMaintenance {
     @ManyToOne
     private Vehicules vehicules;
 
-    @ManyToOne
-    private TypesJobDeMaintenance typesJobDeMaintenance;
+
 
 }
