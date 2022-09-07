@@ -16,5 +16,7 @@ public class TypesJobDeMaintenance {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String libelle;
-
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "typesJobDeMaintenance")
+    private Collection<Jobs> jobs;
 }

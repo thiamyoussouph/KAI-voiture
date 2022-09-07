@@ -32,6 +32,6 @@ public class VehiculesDto {
     private Collection<PannesVehicule>pannesVehicules;
     private Collection<Affectation>affectations;
     private Collection<KilometrageVehicule>kilometrageVehicules;
-    private Collection<JobDeMaintenance>jobDeMaintenances;
+
 
 }

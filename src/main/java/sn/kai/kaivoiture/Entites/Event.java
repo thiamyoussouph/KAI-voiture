@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 
-import java.util.Collection;
+
 import java.util.Date;
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
@@ -18,8 +18,8 @@ public class Event  {
     private int id;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date datedebut;
-    private String description;
     private String lieu;
+
     @ManyToOne
     private Vehicules vehicules;
 

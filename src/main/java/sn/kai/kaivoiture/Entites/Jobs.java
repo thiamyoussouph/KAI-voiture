@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -12,7 +13,10 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Jobs extends Event {
-    private String libelle;
+
+    private Date fin;
+    @ManyToOne
+    private TypesJobDeMaintenance typesJobDeMaintenance;
 
 
 }

@@ -3,6 +3,7 @@ package sn.kai.kaivoiture.Entites;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import sn.kai.kaivoiture.enums.IMmpacte;
 
 import javax.persistence.*;
 
@@ -11,6 +12,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Accident extends Incident{
-    private String libelle;
+    private String description;
+
+
 
 }

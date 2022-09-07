@@ -8,8 +8,20 @@ public interface Ievent {
 
     Panne savpane(Panne panne);
 
-    Event saveAccident(Event event);
-    Event saveJOb(Event event);
+    Accident saveAccident(Accident accident);
+   Jobs saveJOb(Jobs jobs);
+   Collection<Jobs> getJObs();
+    Collection<Accident> getaccidents();
+    Collection<Panne> getpannes();
+    void deletePanne(int id);
+    void deletejobe(int id);
+    void deleteAccident(int id);
+    Panne editPanne(int id);
+    Accident editAccident(int id);
+    Jobs editJob(int id);
+
+
+
 
 
 

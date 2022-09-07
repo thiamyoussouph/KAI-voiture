@@ -12,10 +12,13 @@ import java.util.Collection;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pannes {
+public class TypesPannes {
 @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private  String libellet;
+    @OneToMany(mappedBy = "typePanne")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Collection<Panne> pannes;
 
 
 }

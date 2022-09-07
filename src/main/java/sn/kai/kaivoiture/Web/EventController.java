@@ -4,8 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sn.kai.kaivoiture.Dtos.VehiculesDto;
+import sn.kai.kaivoiture.Entites.Accident;
 import sn.kai.kaivoiture.Entites.Event;
+import sn.kai.kaivoiture.Entites.Jobs;
 import sn.kai.kaivoiture.Entites.Panne;
+import sn.kai.kaivoiture.Exception.VehiculeExceptionEdite;
 import sn.kai.kaivoiture.service.Eventserviceimplement;
 
 import java.util.Collection;
@@ -27,4 +31,48 @@ public class EventController {
     public Panne savepane( @RequestBody Panne panne){
         return eventserviceimplement.savpane(panne);
     }
+
+    @PostMapping("/saveaccident")
+    public Accident saveacident(@RequestBody Accident accident){
+        return eventserviceimplement.saveAccident(accident);
+    }
+    @PostMapping("/savejob")
+    public Jobs savejobs(@RequestBody Jobs  jobs){
+        return eventserviceimplement.saveJOb(jobs);
+    }
+    @GetMapping("/getjobs")
+    public Collection<Jobs> Jobs(){
+
+        return eventserviceimplement.getJObs();
+
+    }
+    @GetMapping("/getaccidents")
+    public Collection<Accident> acident(){
+
+        return eventserviceimplement.getaccidents();
+
+    }
+    @GetMapping("/getPan")
+    public Collection<Panne> getPan(){
+
+        return eventserviceimplement.getpannes();
+
+    }
+    @DeleteMapping("/deletepanne/{id}")
+    public void deletePanne(@PathVariable int id){
+        eventserviceimplement.deletePanne(id);
+    }
+    @DeleteMapping("/deletejob/{id}")
+    public void deletejob(@PathVariable int id){
+        eventserviceimplement.deletejobe(id);
+    }
+    @DeleteMapping("/deleteaccident/{id}")
+    public void deleteaccident(@PathVariable int id){
+        eventserviceimplement.deleteAccident(id);
+    }
+    @GetMapping("/editerpanne/{id}")
+    public Panne edite(@PathVariable(value = "id")int id) throws VehiculeExceptionEdite {
+        return  eventserviceimplement.editPanne(id);
+    }
+
 }

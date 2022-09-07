@@ -2,7 +2,8 @@ package sn.kai.kaivoiture.Dtos;
 
 
 import lombok.Data;
-import sn.kai.kaivoiture.Entites.Pannes;
+
+import sn.kai.kaivoiture.Entites.TypesPannes;
 import sn.kai.kaivoiture.Entites.Vehicules;
 import sn.kai.kaivoiture.enums.Nievau;
 
@@ -18,6 +19,6 @@ public class PannesVehiculeDto {
     private Vehicules vehicules;
     private boolean etat;
     private Date dateResolution;
-    private Pannes pannes;
+    private TypesPannes Typespannes;
     private Nievau niveau;
 }

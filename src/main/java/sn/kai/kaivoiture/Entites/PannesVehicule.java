@@ -26,7 +26,6 @@ public class PannesVehicule {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private Vehicules vehicules;
-    @ManyToOne
-    private Pannes pannes;
+
 
 }

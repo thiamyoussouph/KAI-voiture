@@ -7,10 +7,10 @@ import java.util.Collection;
 
 @Data
 
-public class PannesDto {
+public class TypesPannesDto {
 
     private int id;
     private  String libellet;
-    private Collection<PannesVehicule> pannesVehicules;
+
 
 }

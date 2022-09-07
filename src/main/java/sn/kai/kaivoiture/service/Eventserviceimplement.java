@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sn.kai.kaivoiture.Entites.*;
-import sn.kai.kaivoiture.Repository.EVentRepository;
-import sn.kai.kaivoiture.Repository.IncidentRepository;
-import sn.kai.kaivoiture.Repository.PAnnesRepository;
+import sn.kai.kaivoiture.Repository.*;
 
 import java.util.Collection;
 
@@ -22,6 +20,10 @@ public class Eventserviceimplement implements Ievent {
     @Autowired
     private PAnnesRepository pAnnesRepository;
     @Autowired
+private AccidenrRepository accidenrRepository;
+    @Autowired
+private JobRepository jobRepository;
+    @Autowired
     private IncidentRepository incidentRepository;
     @Override
     public Panne savpane(Panne panne) {
@@ -31,19 +33,62 @@ public class Eventserviceimplement implements Ievent {
 
 
     @Override
-    public Event saveAccident(Event event) {
-        Accident accident=new Accident();
-        return eVentRepository.save(accident);
+    public Accident saveAccident(Accident accident) {
+
+        return accidenrRepository.save(accident);
     }
 
     @Override
-    public Event saveJOb(Event event) {
-        Jobs jobs=new Jobs();
-        return eVentRepository.save(jobs);
+    public Jobs saveJOb(Jobs jobs) {
+
+        return jobRepository.save(jobs);
     }
 
+    @Override
+    public Collection<Jobs> getJObs() {
+        return jobRepository.findAll();
+    }
 
+    @Override
+    public Collection<Accident> getaccidents() {
+        return accidenrRepository.findAll();
+    }
 
+    @Override
+    public Collection<Panne> getpannes() {
+        return pAnnesRepository.findAll();
+    }
+
+    @Override
+    public void deletePanne(int id) {
+        pAnnesRepository.deleteById(id);
+    }
+
+    @Override
+    public void deletejobe(int id) {
+        jobRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAccident(int id) {
+        accidenrRepository.deleteById(id);
+
+    }
+
+    @Override
+    public Panne editPanne(int id) {
+        return pAnnesRepository.findById(id).get();
+    }
+
+    @Override
+    public Accident editAccident(int id) {
+        return null;
+    }
+
+    @Override
+    public Jobs editJob(int id) {
+        return null;
+    }
 
 
     @Override

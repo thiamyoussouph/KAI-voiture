@@ -43,8 +43,6 @@ public class Vehicules {
     @OneToMany(mappedBy = "vehicules")
     private Collection<KilometrageVehicule>kilometrageVehicules;
     @OneToMany(mappedBy = "vehicules")
-    private Collection<JobDeMaintenance>jobDeMaintenances;
-    @OneToMany(mappedBy = "vehicules")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Collection<Event>events;
 }

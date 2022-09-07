@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 
@@ -13,7 +14,10 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Panne extends Incident{
+    private Date Resolution;
+    @ManyToOne
+    private TypesPannes typePanne;
 
-    private String typePanne;
+
 
 }

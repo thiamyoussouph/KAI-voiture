@@ -1,6 +1,6 @@
 package sn.kai.kaivoiture.service;
 
-import sn.kai.kaivoiture.Dtos.PannesDto;
+
 import sn.kai.kaivoiture.Dtos.PannesVehiculeDto;
 import sn.kai.kaivoiture.Dtos.VehiculesDto;
 import sn.kai.kaivoiture.Entites.PannesVehicule;
