@@ -18,6 +18,9 @@ public interface Ievent {
     void deleteAccident(int id);
     Panne editPanne(int id);
     Accident editAccident(int id);
+    Accident updateAccident(Accident accident);
+    Panne updatePanne(Panne panne);
+    Jobs updateJob(Jobs jobs);
     Jobs editJob(int id);
 
 

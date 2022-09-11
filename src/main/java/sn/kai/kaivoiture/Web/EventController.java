@@ -74,5 +74,29 @@ public class EventController {
     public Panne edite(@PathVariable(value = "id")int id) throws VehiculeExceptionEdite {
         return  eventserviceimplement.editPanne(id);
     }
+    @GetMapping("/editeracident/{id}")
+    public Accident editeaccident(@PathVariable(value = "id")int id) throws VehiculeExceptionEdite {
+        return  eventserviceimplement.editAccident(id);
+    }
+    @PutMapping("/updateaccident/{id}")
+    public Accident updateAccident(@PathVariable(value = "id")int id,@RequestBody Accident accident) throws VehiculeExceptionEdite {
+        accident.setId(id);
+        return eventserviceimplement.updateAccident(accident);
+    }
+    @PutMapping("/updatepanne/{id}")
+    public Panne updatepanne(@PathVariable(value = "id")int id,@RequestBody Panne panne) throws VehiculeExceptionEdite {
+        panne.setId(id);
+        return eventserviceimplement.updatePanne(panne);
+    }
+    @PutMapping("/updatejob/{id}")
+    public Jobs updatejob(@PathVariable(value = "id")int id,@RequestBody Jobs jobs) throws VehiculeExceptionEdite {
+        jobs.setId(id);
+        return eventserviceimplement.updateJob(jobs);
+    }
+     @GetMapping("/editerjob/{id}")
+    public Jobs editejob(@PathVariable(value = "id")int id) throws VehiculeExceptionEdite {
+        return  eventserviceimplement.editJob(id);
+     }
+
 
 }

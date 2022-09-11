@@ -82,12 +82,28 @@ private JobRepository jobRepository;
 
     @Override
     public Accident editAccident(int id) {
-        return null;
+
+            return accidenrRepository.findById(id).get();
+    }
+
+    @Override
+    public Accident updateAccident(Accident accident) {
+        return accidenrRepository.save(accident);
+    }
+
+    @Override
+    public Panne updatePanne(Panne panne) {
+        return pAnnesRepository.save(panne);
+    }
+
+    @Override
+    public Jobs updateJob(Jobs jobs) {
+        return jobRepository.save(jobs);
     }
 
     @Override
     public Jobs editJob(int id) {
-        return null;
+        return jobRepository.findById(id).get();
     }
 
 
